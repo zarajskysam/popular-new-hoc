@@ -4,18 +4,13 @@ import Popular from '../components/Popular';
 
 export function updateItem (Component) {
     return class extends React.Component {
-      constructor(props) {
-        super(props);
-        this.NewItem = <New><Component {...this.props}/></New>;
-        this.PopItem = <Popular><Component {...this.props}/></Popular>
-      }
       
       renderItem() {
         if (this.props.views < 100) {
-          return this.NewItem;
+          return <New><Component {...this.props}/></New>;
         }
         if (this.props.views >= 1000) {
-          return this.PopItem;
+          return <Popular><Component {...this.props}/></Popular>;
         }
         return <Component {...this.props}/>
       }
